@@ -8,7 +8,7 @@ def validatePhoneNumber(number):
             params={'number':number}
         )
 def ValidatePanId(panId):
-    if not (panId[:5].isalpha() and panId[:5].isupper() and (not panId[5:9].isalpha()) and panId[-1].isalpha()):
+    if not (panId[:5].isalpha() and panId[:5].isupper() and (not panId[5:9].isalpha()) and panId[-1].isalpha() and panId[-1].isupper()):
         raise ValidationError(
         _('%(panId)s is not a valid Pan Number'),
         params={'panId':panId}

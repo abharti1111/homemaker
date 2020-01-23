@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'account',
     'organisation',
-    
-
+    'rest_framework.authtoken',
+    'subscription',
+    'shopingcart',
+    'marketplace',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +106,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Rest framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

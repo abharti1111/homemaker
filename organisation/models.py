@@ -1,6 +1,7 @@
 from django.db import models
 from account.models import Profile
 from account.validators import ValidatePanId
+from django.core.validators import URLValidator
 
 # Create your models here.
 class Organisation(models.Model):
@@ -13,7 +14,15 @@ class Organisation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     ratings = models.FloatField()
     picture = models.ImageField(upload_to='media/organisation/images/',blank=True,null=True)
-    
+    stock = models.PositiveIntegerField()
+    extra_available = models.BooleanField(default=False)
+    extra_stock = models.PositiveIntegerField()
+    facebook_page = models.TextField(validators=[URLValidator()])
+    instagram_page = models.TextField(validators=[URLValidator])
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
 
     def __str__(self):
         return self.name

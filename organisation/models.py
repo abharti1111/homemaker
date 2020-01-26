@@ -14,13 +14,10 @@ class Organisation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     ratings = models.FloatField()
     picture = models.ImageField(upload_to='media/organisation/images/',blank=True,null=True)
-    stock = models.PositiveIntegerField()
-    extra_available = models.BooleanField(default=False)
-    extra_stock = models.PositiveIntegerField()
-    facebook_page = models.TextField(validators=[URLValidator()])
-    instagram_page = models.TextField(validators=[URLValidator])
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    extra_stock = models.PositiveIntegerField(default=0)
+    facebook_page = models.URLField(validators=[URLValidator], null=True, blank=True,max_length=200)
+    instagram_page = models.URLField(validators=[URLValidator], null=True, blank=True,max_length=200)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
 
 

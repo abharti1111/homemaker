@@ -8,7 +8,7 @@ import datetime
 class Booking(models.Model):
     subscriber = models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='subscriber')
     subscribedTo = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='subscribed_to')
-    startDate = models.DateField(default=timezone.now)
+    startDate = models.DateField(default=datetime.date.today())
     EndDate = models.DateField(default=datetime.date.today()+datetime.timedelta(weeks=1))
     weeks = models.IntegerField(default=1)
     price = models.IntegerField()

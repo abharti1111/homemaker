@@ -8,7 +8,7 @@ class OrganisationViewSerializer(serializers.ModelSerializer):
             'name',
             'picture',
             'isVeg',
-            'menu',
+            # 'menu',
             'weeklyPrice',
             'description',
         )
@@ -27,19 +27,19 @@ class OrganisationCreateSerializer(serializers.ModelSerializer):
             'name',
             'picture',
             'isVeg',
-            'menu',
+            # 'menu',
             'weeklyPrice',
             'description',
             'panId',
-        )
-        read_only_fields=(
             'owner',
-            'ratings',
-            'created_at',
+            'facebook_page',
+            'instagram_page',
+            'fssai_Lic'
         )
+        
         verbose_name = 'Organisation'
         verbose_name_plural = 'Organisations'
-class MenuViewSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields=(
@@ -50,4 +50,11 @@ class MenuViewSerializer(serializers.ModelSerializer):
             'thursday',
             'friday',
             'saturday',
+            'org',
         )
+        
+    # def create(self, validated_data):
+    #     data = super().create(validated_data)
+    #     print(data,self.context['request'].user.profile.organisation)
+    #     # validated_data['org'] = self.context['request'].user.profile.organisation
+    #     return data
